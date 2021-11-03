@@ -1,18 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import ArticleUI from './ArticleUI';
+import ArticleService from './ArticleService';
 
 const Article = () => {
   return (
-    <View style={styles.container}>
-      <Text>Article</Text>
-    </View>
+    <ArticleService>{(props: any) => <ArticleUI {...props} />}</ArticleService>
   );
 };
 
 export default Article;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

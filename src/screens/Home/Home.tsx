@@ -1,18 +1,9 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import HomeUI from './HomeUI';
+import HomeService from './HomeService';
 
 const Home = () => {
-  return (
-    <View style={styles.home}>
-      <Text>Home</Text>
-    </View>
-  );
+  return <HomeService>{(props: any) => <HomeUI {...props} />}</HomeService>;
 };
 
 export default Home;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
