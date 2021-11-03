@@ -17,7 +17,7 @@ module.exports = {
           '.json',
         ],
         alias: {
-          '@redux/*': ['./src/redux'],
+          '@redux': ['./src/redux'],
           '@assets/*': ['./src/assets'],
           '@screens': ['./src/screens'],
         },
