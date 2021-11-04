@@ -1,3 +1,8 @@
+/*
+list of all sections available on NYT
+copied from the api docs 
+no api available to fetch them
+*/
 const sections = [
   'arts',
   'automobiles',
