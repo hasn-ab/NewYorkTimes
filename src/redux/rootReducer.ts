@@ -1,4 +1,4 @@
-import homeReducer from '@screens/Home/redux/reducer';
+import {homeReducer} from '@screens/Home/redux/';
 import {combineReducers} from 'redux';
 import articleReducer from '../screens/Article/redux/reducer';
 
