@@ -32,7 +32,8 @@ const Article = ({item}: any) => {
   );
 };
 function articlesAreEqual(prev, next) {
-  return prev.title === next.title;
+  return prev.item.url === next.item.url;
 }
+//implements PureComponent functionality
 const ArticleItem = React.memo(Article, articlesAreEqual);
 export default ArticleItem;
