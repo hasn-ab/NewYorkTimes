@@ -1,13 +1,17 @@
 //Immer is recommed method for creating reducers
 import produce from 'immer';
-
-// Reducer with initial state
-const INITIAL_STATE = {};
+const INITIAL_STATE = {
+  articles: Array<any>(0),
+};
+import * as Actions from './actionTypes';
 //
 const homeReducer = (state = INITIAL_STATE, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case '':
+      case Actions.SET_NEWS_FEED:
+        console.log('set news feed', {action});
+        const newArticles = action.payload.results;
+        draft.articles = newArticles;
         break;
       default:
         break;
