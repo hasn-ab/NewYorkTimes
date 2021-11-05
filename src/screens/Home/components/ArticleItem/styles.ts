@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   image: {
     height: '100%',
     aspectRatio: 1,
-    backgroundColor: 'cyan',
+    backgroundColor: '#dadada',
   },
   infoContainer: {
     flex: 1,
@@ -23,16 +23,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   titleText: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500',
     flexShrink: 1,
   },
   reporterText: {
-    fontSize: 14,
+    fontSize: 12,
     marginTop: 5,
   },
   publishedTimeText: {
-    fontSize: 14,
+    fontSize: 12,
+    marginTop: 3,
   },
 });
 

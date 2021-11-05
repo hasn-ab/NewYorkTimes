@@ -1,20 +1,29 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity, Image, Text, View} from 'react-native';
 import styles from './styles';
-const ArticleItem = ({item}: any) => {
+const Article = ({item}: any) => {
+  let uri;
+  try {
+    uri = item?.multimedia?.[2]?.url || null;
+  } catch (error) {
+    console.log({
+      error,
+      item,
+    });
+  }
   return (
     <TouchableOpacity style={styles.container}>
       <View style={styles.contentContainer}>
-        <Image style={styles.image} />
+        <Image source={{uri}} style={styles.image} />
 
         <View style={styles.infoContainer}>
-          <Text ellipsizeMode="clip" numberOfLines={2} style={styles.titleText}>
-            Lorem Ipsum dormoti asdhfksdjf asdfsd kfsdks kfsdks
+          <Text ellipsizeMode="tail" numberOfLines={2} style={styles.titleText}>
+            {item.title}
           </Text>
           <View>
-            <Text style={styles.reporterText}>By reported</Text>
+            <Text style={styles.reporterText}>{item.byline}</Text>
             <Text style={styles.publishedTimeText}>
-              Published: 10 minutes ago
+              Published: {item.published_date}
             </Text>
           </View>
         </View>
@@ -22,5 +31,8 @@ const ArticleItem = ({item}: any) => {
     </TouchableOpacity>
   );
 };
-
+function articlesAreEqual(prev, next) {
+  return prev.title === next.title;
+}
+const ArticleItem = React.memo(Article, articlesAreEqual);
 export default ArticleItem;
