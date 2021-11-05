@@ -1,8 +1,6 @@
 import {all, fork} from 'redux-saga/effects';
-
-// Imports: Redux Sagas
 import {homeSagas} from '@screens/Home/redux';
-// Redux Saga: Root Saga
-export function* rootSaga() {
+// Root Saga combining all sagas of the app
+export default function* rootSaga() {
   yield all([fork(homeSagas)]);
 }
