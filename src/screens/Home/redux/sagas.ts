@@ -18,9 +18,20 @@ function* storeSection(section: SectionDataType) {
   }
 }
 
+function* updateApiProgress(progress: Boolean) {
+  yield put({
+    type: actions.UPDATE_API_PROGRESS,
+    payload: progress,
+  });
+}
+
 //listens for getnewsfeed action
 function* getArticlesList(action: AnyAction): any {
   const {payload = null} = action;
+
+  //show progress on start of api call
+  yield updateApiProgress(true);
+
   try {
     //run storeSection saga
     yield fork(storeSection, payload?.section);
@@ -33,6 +44,9 @@ function* getArticlesList(action: AnyAction): any {
     });
   } catch (error) {
     console.log({error});
+  } finally {
+    //hide progress after api call ends
+    yield updateApiProgress(false);
   }
 }
 

@@ -11,9 +11,10 @@ import * as Actions from './redux/actionTypes';
 const HomeService = ({children}: any) => {
   const dispatch = useAppDispatch();
   const currentSection = useAppSelector(state => state.home.currentSection);
-
+  //is true when network call is occuring
+  const showProgress = useAppSelector(state => state.home.apiProgress);
   useEffect(() => {
-    //if a section was not selected call default home page
+    //if a section was not selected call default home page api
     if (!currentSection) {
       dispatch({
         type: Actions.GET_NEWS_FEED,
@@ -24,8 +25,8 @@ const HomeService = ({children}: any) => {
   return children({
     /**
     handlers, data, will be passed to UI here
-    UI will get them as props
    */
+    showProgress,
   });
 };
 
