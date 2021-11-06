@@ -4,16 +4,9 @@ import styles from './styles';
 import {timeTillNow} from '@utils/getTimeDifference';
 const Article = ({item}: any) => {
   let uri;
+  uri = item?.multimedia?.[2]?.url || null; //get 150x150 thumbnail, or null if missing
   //get time that has passed since the published date
   const time = timeTillNow(new Date(item.published_date));
-  try {
-    uri = item?.multimedia?.[2]?.url || null;
-  } catch (error) {
-    console.log({
-      error,
-      item,
-    });
-  }
   return (
     <TouchableOpacity style={styles.container}>
       <View style={styles.contentContainer}>
