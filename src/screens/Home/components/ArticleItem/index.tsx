@@ -1,8 +1,11 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity, Image, Text, View} from 'react-native';
 import styles from './styles';
+import {timeTillNow} from '@utils/getTimeDifference';
 const Article = ({item}: any) => {
   let uri;
+  //get time that has passed since the published date
+  const time = timeTillNow(new Date(item.published_date));
   try {
     uri = item?.multimedia?.[2]?.url || null;
   } catch (error) {
@@ -22,9 +25,7 @@ const Article = ({item}: any) => {
           </Text>
           <View>
             <Text style={styles.reporterText}>{item.byline}</Text>
-            <Text style={styles.publishedTimeText}>
-              Published: {item.published_date}
-            </Text>
+            <Text style={styles.publishedTimeText}>Published: {time}</Text>
           </View>
         </View>
       </View>

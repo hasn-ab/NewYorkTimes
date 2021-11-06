@@ -20,6 +20,7 @@ module.exports = {
           '@redux': ['./src/redux'],
           '@assets/*': ['./src/assets'],
           '@screens': ['./src/screens'],
+          '@utils': ['./src/utils'],
         },
       },
     ],
