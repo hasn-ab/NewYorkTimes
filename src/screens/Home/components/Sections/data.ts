@@ -32,8 +32,4 @@ const sections = [
   {key: 'world', name: 'World'},
 ];
 
-export type SectionType = {
-  key?: String;
-  name?: String;
-};
 export {sections};
