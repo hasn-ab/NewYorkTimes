@@ -1,14 +1,16 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Image, Text, View} from 'react-native';
+import {TouchableOpacity, Image, Text, View} from 'react-native';
 import styles from './styles';
 import {timeTillNow} from '@utils/getTimeDifference';
-const Article = ({item}: any) => {
+import {ArticleItemProps} from '@screens/Home/propTypes/articleItemProps';
+const Article = ({item, onItemPress}: ArticleItemProps) => {
   let uri;
   uri = item?.multimedia?.[2]?.url || null; //get 150x150 thumbnail, or null if missing
   //get time that has passed since the published date
   const time = timeTillNow(new Date(item.published_date));
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity onPress={onItemPress} style={styles.container}>
       <View style={styles.contentContainer}>
         <Image source={{uri}} style={styles.image} />
 
