@@ -6,22 +6,23 @@ import SectionItem from '../SectionItem/SectionItem';
 const firstRowData = sections.slice(0, sections.length / 2);
 const secondRowData = sections.slice(sections.length / 2);
 import styles from './styles';
-import {useAppDispatch} from '@redux/hooks';
+import {useAppDispatch, useAppSelector} from '@redux/hooks';
 import {GET_NEWS_FEED} from '../../redux/actionTypes';
 
 const Sections = () => {
   const dispatch = useAppDispatch();
-  const [currentActive, setCurrentActive] = useState<SectionType | null>(null);
+  const currentSection = useAppSelector(state => state.home.currentSection);
+  const [currentActive, setCurrentActive] = useState<SectionType | null>(
+    currentSection,
+  );
 
   useEffect(() => {
-    console.log({currentActive});
-
     //called on section press, call api with section key
     if (currentActive != null) {
       dispatch({
         type: GET_NEWS_FEED,
         payload: {
-          section: currentActive.key,
+          section: currentActive,
         },
       });
     }

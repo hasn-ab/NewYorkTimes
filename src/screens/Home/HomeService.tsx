@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {useAppDispatch} from '@redux/hooks';
+import {useAppDispatch, useAppSelector} from '@redux/hooks';
 import * as Actions from './redux/actionTypes';
 
 /**
@@ -10,11 +10,15 @@ import * as Actions from './redux/actionTypes';
  */
 const HomeService = ({children}: any) => {
   const dispatch = useAppDispatch();
+  const currentSection = useAppSelector(state => state.home.currentSection);
 
   useEffect(() => {
-    dispatch({
-      type: Actions.GET_NEWS_FEED,
-    });
+    //if a section was not selected call default home page
+    if (!currentSection) {
+      dispatch({
+        type: Actions.GET_NEWS_FEED,
+      });
+    }
   }, []);
 
   return children({
