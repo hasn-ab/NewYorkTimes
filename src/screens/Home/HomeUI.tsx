@@ -4,6 +4,7 @@ import {HomeProps} from './propTypes';
 import Sections from './components/Sections';
 import ArticleList from './components/ArticleList';
 import Loader from 'src/components/Loader';
+import LocationPicker from './components/LocationPicker/index';
 
 /**
  * HomeUI will only render the UI
@@ -17,6 +18,8 @@ const HomeUI = (homeProps: HomeProps) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.contentContainer}>
         <Sections />
+
+        <LocationPicker />
 
         <View style={{flex: 1}}>
           <ArticleList />
