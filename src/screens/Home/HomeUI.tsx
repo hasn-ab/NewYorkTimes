@@ -19,8 +19,8 @@ const HomeUI = (homeProps: HomeProps) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.contentContainer}>
         <Sections />
-        <LocationPicker />
-        <SearchKeyword onSearchPress={onSearchKeywordPress} />
+        {/* <LocationPicker /> */}
+        {/* <SearchKeyword onSearchPress={onSearchKeywordPress} /> */}
         <View style={{flex: 1}}>
           <ArticleList />
           {showProgress && <Loader style={styles.loader} />}
