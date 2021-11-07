@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, FlatList, ScrollView, View} from 'react-native';
 import {sections, SectionType} from './data';
-import SectionItem from '../SectionItem/SectionItem';
+import SectionItem from '../SectionItem';
 //dividing data into half for rows
 const firstRowData = sections.slice(0, sections.length / 2);
 const secondRowData = sections.slice(sections.length / 2);
