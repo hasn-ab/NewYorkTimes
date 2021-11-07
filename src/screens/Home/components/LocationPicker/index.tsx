@@ -34,6 +34,7 @@ const LocationPicker = (props: any) => {
           />
 
           <Image
+            resizeMode="contain"
             source={require('@assets/images/dropdown.png')}
             style={styles.dropDown}
           />

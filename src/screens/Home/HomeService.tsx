@@ -22,11 +22,16 @@ const HomeService = ({children}: any) => {
     }
   }, []);
 
+  const onSearchKeywordPress = (keyword: string) => {
+    console.log('onSearchKeyword press', keyword);
+  };
+
   return children({
     /**
     handlers, data, will be passed to UI here
    */
     showProgress,
+    onSearchKeywordPress,
   });
 };
 

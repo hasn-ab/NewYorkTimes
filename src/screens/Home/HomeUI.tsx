@@ -5,6 +5,7 @@ import Sections from './components/Sections';
 import ArticleList from './components/ArticleList';
 import Loader from 'src/components/Loader';
 import LocationPicker from './components/LocationPicker/index';
+import SearchKeyword from './components/SearchKeyword/index';
 
 /**
  * HomeUI will only render the UI
@@ -13,14 +14,13 @@ import LocationPicker from './components/LocationPicker/index';
  */
 const HomeUI = (homeProps: HomeProps) => {
   console.log({homeProps});
-  const {showProgress} = homeProps;
+  const {showProgress, onSearchKeywordPress} = homeProps;
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.contentContainer}>
         <Sections />
-
         <LocationPicker />
-
+        <SearchKeyword onSearchPress={onSearchKeywordPress} />
         <View style={{flex: 1}}>
           <ArticleList />
           {showProgress && <Loader style={styles.loader} />}
