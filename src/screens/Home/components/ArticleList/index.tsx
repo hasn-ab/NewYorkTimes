@@ -6,11 +6,15 @@ import ArticleItem from '../ArticleItem';
 import styles from './styles';
 //displays list of articles in Home screen
 const ArticleList = () => {
-  const articles = useAppSelector(state => state.home.articles);
+  const currentSection = useAppSelector(state => state.home.currentSection);
   const navigation = useNavigation();
 
+  const sectionKey = currentSection?.key || 'home';
+  const articles = useAppSelector(
+    state => state.home.articles?.[`${sectionKey}`] || [],
+  );
+
   const onItemPress = (item: any) => {
-    console.log({itempress: item});
     navigation.navigate('Article', {
       url: item.url,
       title: item.title,

@@ -36,16 +36,18 @@ function* getArticlesList(action: AnyAction): any {
     //run storeSection saga
     yield fork(storeSection, payload?.section);
     const result = yield call(getSectionArticles, payload?.section.key);
-    console.log({result});
     //store api response in redux
     yield put({
       type: actions.SET_NEWS_FEED,
-      payload: result.data,
+      payload: {
+        section: payload?.section,
+        data: result.data,
+      },
     });
   } catch (error) {
     console.log({error});
   } finally {
-    //hide progress after api call ends
+    //hide progress after the api call ends
     yield updateApiProgress(false);
   }
 }
